@@ -1,7 +1,7 @@
 <template>
   <div class="game-sort-content">
     <nav-list></nav-list>
-    <div class='banner' v-lazy:background-image="bannerBg">
+    <div class='banner' v-lazy:background-image="bannerBg" @click='one'>
       <div class="banner-desc spaceBetween">
         <a href='javascript: void(0);' class="banner-item">
           <h3 class='oneLine'>企鹅电竞杯竞技大礼</h3>
@@ -13,7 +13,14 @@
         </a>
       </div>
     </div>
-    <item-list></item-list>
+    <router-link tag='a' to='/go/404'>404</router-link>
+    <router-link tag='a' to='/go/test'>test</router-link>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <!-- <keep-alive> -->
+      <!-- <component :is='itemList'></component> -->
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -24,10 +31,30 @@ export default {
   name: 'gameSort',
   data () {
     return {
-      bannerBg: 'https://dakani1.github.io/interview.github.io/static/img/banner@3x.8bf886d.png'
+      bannerBg: 'https://dakani1.github.io/interview.github.io/static/img/banner@3x.8bf886d.png',
+      msg: 'gaa',
+      itemList: 'item-list'
     }
   },
-  mounted () {
+  created () {
+    console.log(this._isMounted)
+  },
+  async mounted () {
+    console.log(999)
+  },
+  methods: {
+    one () {
+      // console.log(66666)
+      // console.log(this.gaa)
+      // new Promise((resolve, reject) => {
+      //   reject(aaaaa)
+      // })
+    },
+    two () {
+      return new Promise((resolve, reject) => {
+        resolve(22222)
+      })
+    }
   },
   components: {
     'item-list': ItemList,

@@ -3,16 +3,16 @@
     <nav class='navList'>
       <div class="navListWrap" ref='navListWrap' v-if="navList.length > 0">
         <slider-common v-if="navList.length > swiperOption.slidesPerView" :swiperOption ='swiperOption' style="width: 100%;">
-          <dl :class="{'nav-item': true, active: active === key, 'swiper-slide': true}" v-for='(item, key) in navList' :key='key'>
+          <router-link tag='dl' to='/404' :class="{'nav-item': true, active: active === key, 'swiper-slide': true}" v-for='(item, key) in navList' :key='key'>
             <dt><img style='width: 60px;' :src="item.iconSrc || ''" alt=""></dt>
             <dd>{{item.sortName || ''}}</dd>
-          </dl>
+          </router-link>
         </slider-common>
         <div v-else class='noScroll spaceLeft'>
-          <dl :class="{'nav-item': true, active: active === key, 'swiper-slide': true}" v-for='(item, key) in navList' :key='key'>
+          <router-link tag='dl' to='/404' :class="{'nav-item': true, active: active === key, 'swiper-slide': true}" v-for='(item, key) in navList' :key='key'>
             <dt><img style='width:60px;' :src="item.iconSrc || ''" alt=""></dt>
             <dd>{{item.sortName || ''}}</dd>
-          </dl>
+          </router-link>
         </div>
       </div>
     </nav>
